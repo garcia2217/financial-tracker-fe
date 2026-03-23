@@ -4,7 +4,7 @@ export type TransactionType = "income" | "expense" | "transfer";
 
 export type DebtDirection = "lent" | "borrowed"; // lent = receivable, borrowed = payable
 
-export type AccountType = "bank" | "cash" | "ewallet" | "investment";
+export type AccountType = "cash" | "bank" | "credit" | "investment" | "other";
 
 export type DebtStatus = "active" | "settled" | "partially_settled";
 
@@ -127,8 +127,10 @@ export type ModalType =
   | "edit-transaction"
   | "add-debt"
   | "edit-debt"
+  | "settle-debt"
   | "add-account"
   | "edit-account"
+  | "add-budget"
   | "edit-budget"
   | null;
 

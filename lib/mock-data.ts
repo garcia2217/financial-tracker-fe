@@ -31,7 +31,7 @@ export const MOCK_ACCOUNTS: Account[] = [
   {
     id: "acc-3",
     name: "GoPay",
-    type: "ewallet",
+    type: "other",
     balance: 310_000,
     color: "#15803D",
     icon: "wallet",
@@ -40,7 +40,7 @@ export const MOCK_ACCOUNTS: Account[] = [
   {
     id: "acc-4",
     name: "OVO",
-    type: "ewallet",
+    type: "other",
     balance: 125_000,
     color: "#7C3AED",
     icon: "smartphone",

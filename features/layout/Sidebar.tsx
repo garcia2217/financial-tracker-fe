@@ -41,7 +41,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Debt & Credit",
-    href: "/debt",
+    href: "/debts",
     icon: HandCoins,
     description: "Lend & borrow ledger",
   },
@@ -86,7 +86,8 @@ export default function Sidebar() {
           style={{
             width: 40,
             height: 40,
-            background: "linear-gradient(135deg, var(--color-primary), var(--color-income))",
+            background:
+              "linear-gradient(135deg, var(--color-primary), var(--color-income))",
           }}
         >
           <TrendingUp size={20} color="white" />
@@ -102,7 +103,10 @@ export default function Sidebar() {
             >
               <p
                 className="font-semibold leading-none"
-                style={{ color: "var(--color-text-primary)", fontSize: "0.9rem" }}
+                style={{
+                  color: "var(--color-text-primary)",
+                  fontSize: "0.9rem",
+                }}
               >
                 FinTrack
               </p>
@@ -173,9 +177,7 @@ export default function Sidebar() {
               className={cn(
                 "group flex items-center gap-3 rounded-xl transition-all duration-150",
                 collapsed ? "justify-center px-0 py-3" : "px-3 py-2.5",
-                isActive
-                  ? "text-white"
-                  : "hover:bg-[var(--color-surface-2)]"
+                isActive ? "text-white" : "hover:bg-[var(--color-surface-2)]",
               )}
               style={
                 isActive
@@ -217,7 +219,7 @@ export default function Sidebar() {
           onClick={() => setCollapsed((c) => !c)}
           className={cn(
             "btn btn-ghost btn-sm w-full",
-            collapsed ? "justify-center" : "justify-between"
+            collapsed ? "justify-center" : "justify-between",
           )}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
@@ -234,11 +236,7 @@ export default function Sidebar() {
               </motion.span>
             )}
           </AnimatePresence>
-          {collapsed ? (
-            <ChevronRight size={16} />
-          ) : (
-            <ChevronLeft size={16} />
-          )}
+          {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
         </button>
       </div>
     </motion.aside>

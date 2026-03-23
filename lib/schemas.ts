@@ -31,10 +31,8 @@ export type TransactionFormValues = z.infer<typeof transactionSchema>;
 
 export const accountSchema = z.object({
   name: z.string().min(1, "Account name is required").max(50),
-  type: z.enum(["bank", "cash", "ewallet", "investment"]),
+  type: z.enum(["cash", "bank", "credit", "investment", "other"]),
   balance: z.number().nonnegative("Balance cannot be negative"),
-  color: z.string().min(1),
-  icon: z.string().min(1),
 });
 
 export type AccountFormValues = z.infer<typeof accountSchema>;
@@ -56,6 +54,8 @@ export const budgetItemSchema = z.object({
   categoryId: z.string().min(1),
   amount: z.number().nonnegative(),
 });
+
+export type BudgetItemFormValues = z.infer<typeof budgetItemSchema>;
 
 export const budgetTemplateSchema = z.object({
   items: z.array(budgetItemSchema),

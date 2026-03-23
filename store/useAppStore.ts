@@ -67,6 +67,7 @@ interface AppState {
 
   // Debts
   addDebt: (d: Omit<DebtRecord, "id" | "settledAmount" | "status" | "createdAt" | "updatedAt">) => void;
+  updateDebt: (id: string, d: Partial<Omit<DebtRecord, "id" | "createdAt">>) => void;
   settleDebt: (id: string, amount: number) => void;
   deleteDebt: (id: string) => void;
 
@@ -270,6 +271,23 @@ export const useAppStore = create<AppState>()(
             createdAt: nowISO(),
             updatedAt: nowISO(),
           });
+        });
+      },
+
+      updateDebt: (id, updates) => {
+        set((state) => {
+          const idx = state.debts.findIndex((d) => d.id === id);
+          if (idx >= 0) {
+            state.debts[idx] = { ...state.debts[idx], ...updates, updatedAt: nowISO() };
+            // Auto re-evaluate status in case amount was changed
+            if (state.debts[idx].settledAmount >= state.debts[idx].originalAmount) {
+              state.debts[idx].status = "settled";
+            } else if (state.debts[idx].settledAmount > 0) {
+              state.debts[idx].status = "partially_settled";
+            } else {
+              state.debts[idx].status = "active";
+            }
+          }
         });
       },
 
